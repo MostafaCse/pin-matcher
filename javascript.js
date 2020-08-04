@@ -44,6 +44,7 @@
     }
     
      //submit handler
+     var count=3;
      function submitHandler(){
          const generateNumber=parseInt(detectTag('generate-pin-number').value);
          const inputNumber=parseInt(detectTag('display-number').value);
@@ -52,6 +53,13 @@
          }
          if(generateNumber!=inputNumber){
              displayBlock('doesnot-match',"block");
+             count--;
+             var remainTry=detectTag('count-handle');
+             remainTry.innerText=count+" try left";
+             if(count==0){
+                 document.getElementById('submit-btn').disabled=true;
+                 remainTry.innerText="try left is over.u cannot try anymore";
+             }
          }
          emptyValue('display-number');
          emptyValue('generate-pin-number');
